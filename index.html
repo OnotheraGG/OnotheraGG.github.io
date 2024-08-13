@@ -1,313 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onothera - Custom LoL Skins</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #0f1923;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .navbar {
-            background-color: rgba(26, 46, 64, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .navbar-brand {
-            color: #4db6ac !important;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .nav-link {
-            color: #e0e0e0 !important;
-        }
-
-        .gallery {
-            padding: 4rem 0;
-        }
-
-        .gallery-item {
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-item-overlay {
-            transform: translateY(0);
-        }
-
-        .gallery-item-title {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: #4db6ac;
-        }
-
-        .modal-content {
-            background-color: #1a2e40;
-            color: #e0e0e0;
-        }
-
-        .modal-header,
-        .modal-footer {
-            border-color: #4db6ac;
-        }
-
-        .btn-primary {
-            background-color: #4db6ac;
-            border-color: #4db6ac;
-        }
-
-        .btn-primary:hover {
-            background-color: #3d9189;
-            border-color: #3d9189;
-        }
-
-        footer {
-            background-color: rgba(26, 46, 64, 0.8);
-            color: #e0e0e0;
-            padding: 1rem 0;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Fotos - Onothera Creations Gallery</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #333333;
+      color: #fff;
+    }
+    .banner {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .gallery {
+      padding: 30px 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .modal-content {
+      background-color: #333333;
+    }
+  </style>
 </head>
- 
-<!-- Main Body -->
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Onothera Custom Skins</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container gallery">
-        <div class="row">
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal1">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/DJsona/sonaDJ.gif" alt="DJ Sona Bikini"
-                        class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">DJ Sona Bikini</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal2">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/BewetchingJanna/jannaWitch.gif"
-                        alt="Bewitching Janna" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Bewitching Janna</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal3">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/Briar/AnimaSquad/331.png"
-                        alt="Primordial Briar" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Primordial Briar</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal4">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png"
-                        alt="Dove Seraphine" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Dove Seraphine</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal4">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png"
-                        alt="Dove Seraphine" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Dove Seraphine</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal4">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png"
-                        alt="Dove Seraphine" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Dove Seraphine</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal4">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png"
-                        alt="Dove Seraphine" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Dove Seraphine</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal4">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png"
-                        alt="Dove Seraphine" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Dove Seraphine</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal4">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png"
-                        alt="Dove Seraphine" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Dove Seraphine</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="gallery-item" data-toggle="modal" data-target="#modal4">
-                    <img src="https://onotheragg.github.io/GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png"
-                        alt="Dove Seraphine" class="img-fluid">
-                    <div class="gallery-item-overlay">
-                        <h3 class="gallery-item-title">Dove Seraphine</h3>
-                        <p>Click to view more</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+  <div class="banner">
+    <h1>Onothera Creations Gallery </h1>
+    <h2>(W.I.P) More skins will updated on future, for more ask DM on discord</h2>
+  </div>
+  
+  <div class="container gallery">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="GalleryPhotos/DJsona/sonaDJ.gif" alt="Foto 1" class="img-fluid" data-toggle="modal" data-target="#modal1">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="GalleryPhotos/BewetchingJanna/jannaWitch.gif" alt="Foto 1" class="img-fluid" data-toggle="modal" data-target="#modal2">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="GalleryPhotos/Briar/AnimaSquad/331.png" alt="Foto 1" class="img-fluid" data-toggle="modal" data-target="#modal3">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png" alt="Foto 1" class="img-fluid" data-toggle="modal" data-target="#modal4">
+      </div>
     </div>
+  </div>
 
-    <!-- Modals -->
-    <div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">DJ Sona Bikini</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="https://onotheragg.github.io/GalleryPhotos/DJsona/djsonaBikini.jpg"
-                                    alt="DJ Sona Bikini 1" class="img-fluid mb-3">
-                            </div>
-                            <div class="col-md-4">
-                                <img src="https://onotheragg.github.io/GalleryPhotos/DJsona/djsonaBikini2.jpg"
-                                    alt="DJ Sona Bikini 2" class="img-fluid mb-3">
-                            </div>
-                            <div class="col-md-4">
-                                <img src="https://onotheragg.github.io/GalleryPhotos/DJsona/djsonaBikini3.jpg"
-                                    alt="DJ Sona Bikini 3" class="img-fluid mb-3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Buy Skin</button>
-                </div>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center w-100" id="modal1Label">DJ Sona Bikini</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container gallery">
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/DJsona/djsonaBikini.jpg" alt="Foto 1.1" class="img-fluid">
             </div>
-        </div>
-    </div>
-
-    <!-- Contact Modal -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Contact Onothera</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>For custom skin requests or inquiries:</p>
-                    <p><strong>Discord:</strong> onothera</p>
-                    <p><strong>Join our community:</strong>
-                        <a href="https://discord.gg/b69UbEGGSF">https://discord.gg/b69UbEGGSF</a>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/DJsona/djsonaBikini2.jpg" alt="Foto 1.2" class="img-fluid">
             </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/DJsona/djsonaBikini3.jpg" alt="Foto 1.3" class="img-fluid">
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Onothera. All rights reserved.</p>
-            <p><a href="https://discord.gg/b69UbEGGSF">https://discord.gg/b69UbEGGSF</a></p>
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center w-100" id="modal1Label">Bewetching Janna</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container gallery">
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/BewetchingJanna/JannaWitchFront.jpg" alt="Foto 1.1" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/BewetchingJanna/jannaFron2.jpg" alt="Foto 1.2" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/BewetchingJanna/jannaBack2.jpg" alt="Foto 1.3" class="img-fluid">
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center w-100" id="modal1Label">Primordian Briar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container gallery">
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Briar/AnimaSquad/a.png" alt="Foto 1.1" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Briar/AnimaSquad/ajacket.png" alt="Foto 1.1" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Briar/AnimaSquad/briarJacket.gif" alt="Foto 1.1" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center w-100" id="modal1Label">Dove Seraphine</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container gallery">
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Seraphine/AnimaSquad/HGQIdle.png" alt="Foto 1.1" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Seraphine/AnimaSquad/HQIdle2.png" alt="Foto 1.1" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Seraphine/AnimaSquad/Butt.png" alt="Foto 1.1" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Seraphine/AnimaSquad/cake.png" alt="Foto 1.1" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Seraphine/AnimaSquad/gffff.gif" alt="Foto 1.1" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-4">
+              <img src="GalleryPhotos/Seraphine/AnimaSquad/331.gif" alt="Foto 1.1" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
