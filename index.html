@@ -106,7 +106,7 @@
                     <input type="text" id="searchBar" class="form-control search-bar mb-3" placeholder="Search">
                     <div class="d-flex flex-wrap gap-2" id="filters">
                         <button class="btn filter-button" data-category="vanilla">Vanilla</button>
-                        <button class="btn filter-button" data-category="yordles">Yordles</button>
+                        <button class="btn filter-button" data-category="yordle">Yordles</button>
                         <button class="btn filter-button" data-category="futanari">Futanari</button>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                 category: ["yordle"],
                 img: "Photos/Vex/Futanari/futa1.jpg",
                 extraImages: [
-                     "Photos/Vex/Futanari/futa2.jpg"
+                    "Photos/Vex/Futanari/futa2.jpg"
                 ]
             },
             {
@@ -258,7 +258,7 @@
 
         ];
 
-        let activeCategories = new Set();
+        let activeCategories = new Set(["vanilla"]);
         let searchQuery = '';
 
         const photoGrid = document.getElementById('photoGrid');
@@ -302,6 +302,7 @@
             });
         }
 
+
         function openModal(photo) {
             const modalImage = document.getElementById('modalImage');
             const modalDescription = document.getElementById('modalDescription');
@@ -344,20 +345,33 @@
         });
 
         filterButtons.forEach(button => {
+            const category = button.getAttribute('data-category');
+
+            // Establece los botones activos según las categorías iniciales
+            if (activeCategories.has(category)) {
+                button.classList.add('active');
+            }
+
+            // Agrega el evento de clic para alternar categorías
             button.addEventListener('click', () => {
-                button.classList.toggle('active');
-                const category = button.getAttribute('data-category');
                 if (activeCategories.has(category)) {
+                    // Si ya está activa, la eliminamos del conjunto
                     activeCategories.delete(category);
+                    button.classList.remove('active');
                 } else {
+                    // Si no está activa, la añadimos
                     activeCategories.add(category);
+                    button.classList.add('active');
                 }
-                loadPhotos();
+                loadPhotos(); // Recarga las fotos filtradas
             });
         });
 
+
         // Initial Load
         loadPhotos();
+
+
     </script>
 </body>
 
