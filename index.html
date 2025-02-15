@@ -103,11 +103,19 @@
             <div class="row">
                 <!-- Sidebar -->
                 <div class="col-lg-3 sidebar-container mb-4">
+                    <H6><ul>
+                        <li>Send me a direct message on discord (username: onothera) for prices or anything related</li><br>
+
+                        <li>Any of these mods is 100% compatible with cslol program</li><br>
+
+                        <li>And yes, all have jiggle physics</li>
+                    </ul></H6>
                     <input type="text" id="searchBar" class="form-control search-bar mb-3" placeholder="Search">
                     <div class="d-flex flex-wrap gap-2" id="filters">
                         <button class="btn filter-button" data-category="vanilla">Vanilla</button>
                         <button class="btn filter-button" data-category="yordle">Yordles</button>
                         <button class="btn filter-button" data-category="futanari">Futanari</button>
+                        <button class="btn filter-button" data-category="subscribestar">Subscribestar</button>
                     </div>
                 </div>
 
@@ -121,6 +129,8 @@
         <!-- Footer -->
         <footer class="footer text-center">
             <p class="mb-0">&copy; ONOTHERA</p>
+            <span style="font-size:0.8em">The mods need you to use both the main champion as well as having and using the skin on the account, 
+                using "skinchanger" or "skinhack" is against League of Legends Terms and Conditions</span><br>
         </footer>
     </div>
 
@@ -157,19 +167,19 @@
             },
             {
                 title: "Neeko - Street Demon",
-                category: ["vanilla"],
+                category: ["vanilla", "subscribestar"],
                 img: "Photos/Neeko/StreetDemon_Nude/Female/female_front.png",
                 extraImages: [
                     "Photos/Neeko/StreetDemon_Nude/Female/female_back.png",
-               ]
+                ]
             },
             {
                 title: "Neeko - Street Demon - Futanari",
-                category: ["futanari"],
+                category: ["futanari", "subscribestar"],
                 img: "Photos/Neeko/StreetDemon_Nude/Futanari/futanari_front.png",
                 extraImages: [
                     "Photos/Neeko/StreetDemon_Nude/Futanari/futanari_back.png",
-               ]
+                ]
             },
             {
                 title: "Orianna - Bunny Suit",
@@ -177,17 +187,17 @@
                 img: "Photos/Orianna/BunnySuit/BunnySuit_front.png",
                 extraImages: [
                     "Photos/Orianna/BunnySuit/BunnySuit_back.png",
-               ]
+                ]
             },
             {
                 title: "Caitlyn - Arcane Prestige",
                 category: ["vanilla"],
                 img: "Photos/Caitlyn/Arcane_Prestige/front.png",
                 extraImages: [
-                   "Photos/Caitlyn/Arcane_Prestige/lateral.png",
-                   "Photos/Caitlyn/Arcane_Prestige/back_capeless.png",
-                   "Photos/Caitlyn/Arcane_Prestige/front_chroma.png",
-                   "Photos/Caitlyn/Arcane_Prestige/back_capeless_chroma.png"
+                    "Photos/Caitlyn/Arcane_Prestige/lateral.png",
+                    "Photos/Caitlyn/Arcane_Prestige/back_capeless.png",
+                    "Photos/Caitlyn/Arcane_Prestige/front_chroma.png",
+                    "Photos/Caitlyn/Arcane_Prestige/back_capeless_chroma.png"
                 ]
             },
             {
@@ -275,7 +285,7 @@
             },
             {
                 title: "Vex - Futanari",
-                category: ["yordle","futanari"],
+                category: ["yordle", "futanari"],
                 img: "Photos/Vex/Futanari/futa1.jpg",
                 extraImages: [
                     "Photos/Vex/Futanari/futa2.jpg"
@@ -309,7 +319,7 @@
 
         ];
 
-        let activeCategories = new Set(["vanilla"]);
+        let activeCategories = new Set(['vanilla']); // Vanilla activada por defecto
         let searchQuery = '';
 
         const photoGrid = document.getElementById('photoGrid');
@@ -319,11 +329,9 @@
         function loadPhotos() {
             photoGrid.innerHTML = '';
             const filteredPhotos = photos.filter(photo => {
-                const matchesCategory =
-                    activeCategories.size === 0 ||
-                    [...activeCategories].some(category => photo.category.includes(category));
-                const matchesSearch =
-                    !searchQuery || photo.title.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesCategory = (activeCategories.size === 0 && photo.category.length === 0) ||
+                    ([...activeCategories].some(category => photo.category.includes(category)) && (photo.category.includes('subscribestar') || !activeCategories.has('subscribestar')));
+                const matchesSearch = !searchQuery || photo.title.toLowerCase().includes(searchQuery.toLowerCase());
                 return matchesCategory && matchesSearch;
             });
 
@@ -348,23 +356,20 @@
 
             document.querySelectorAll('.card').forEach((card, newIndex) => {
                 card.addEventListener('click', () => {
-                    openModal(filteredPhotos[newIndex]); // Pasar la foto filtrada directamente
+                    openModal(filteredPhotos[newIndex]);
                 });
             });
         }
-
 
         function openModal(photo) {
             const modalImage = document.getElementById('modalImage');
             const modalDescription = document.getElementById('modalDescription');
             const extraImagesContainer = document.getElementById('extraImagesContainer');
 
-            // Configurar la imagen principal y descripción
             modalImage.src = photo.img;
             modalDescription.innerText = photo.title;
             extraImagesContainer.innerHTML = '';
 
-            // Configurar las imágenes secundarias con la funcionalidad de rotación
             if (photo.extraImages && photo.extraImages.length > 0) {
                 photo.extraImages.forEach(img => {
                     const imgElement = document.createElement('img');
@@ -372,9 +377,7 @@
                     imgElement.className = 'img-thumbnail';
                     imgElement.style.width = '100px';
 
-                    // Agregar evento para rotar imágenes
                     imgElement.addEventListener('click', () => {
-                        // Rotar: Intercambiar la imagen principal con la seleccionada
                         const tempSrc = modalImage.src;
                         modalImage.src = imgElement.src;
                         imgElement.src = tempSrc;
@@ -384,11 +387,9 @@
                 });
             }
 
-            // Mostrar el modal
             const modal = new bootstrap.Modal(document.getElementById('photoModal'));
             modal.show();
         }
-
 
         searchBar.addEventListener('input', e => {
             searchQuery = e.target.value;
@@ -398,32 +399,29 @@
         filterButtons.forEach(button => {
             const category = button.getAttribute('data-category');
 
-            // Establece los botones activos según las categorías iniciales
             if (activeCategories.has(category)) {
                 button.classList.add('active');
             }
 
-            // Agrega el evento de clic para alternar categorías
             button.addEventListener('click', () => {
                 if (activeCategories.has(category)) {
-                    // Si ya está activa, la eliminamos del conjunto
                     activeCategories.delete(category);
                     button.classList.remove('active');
                 } else {
-                    // Si no está activa, la añadimos
                     activeCategories.add(category);
                     button.classList.add('active');
                 }
-                loadPhotos(); // Recarga las fotos filtradas
+                loadPhotos();
             });
         });
 
-
-        // Initial Load
         loadPhotos();
 
+    </script>
 
     </script>
+
+
 </body>
 
 </html>
