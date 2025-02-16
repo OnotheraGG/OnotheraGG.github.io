@@ -83,6 +83,13 @@
             transform: scale(1.1);
             box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
         }
+
+        .extra-box {
+            background-color: #2A2A2A;
+            border-radius: 10px;
+            min-height: 150px;
+            color: #F4EFE6;
+        }
     </style>
 </head>
 
@@ -101,23 +108,38 @@
         <!-- Main Content -->
         <div class="container my-4 flex-grow-1">
             <div class="row">
+
+
                 <!-- Sidebar -->
                 <div class="col-lg-3 sidebar-container mb-4">
-                    <H6><ul>
-                        <li>Send me a direct message on discord (username: onothera) for prices or anything related</li><br>
-
-                        <li>Any of these mods is 100% compatible with cslol program and yes, all have jiggle physics</li><br>
-
-                        <li>Subscribestar mods are only obtained here: <a href="https://subscribestar.adult/onothera">subscribestar.adult/onothera</a></li>
-                    </ul></H6>
+                    <!-- Search Bar -->
                     <input type="text" id="searchBar" class="form-control search-bar mb-3" placeholder="Search">
+
+                    <!-- Filter Buttons -->
                     <div class="d-flex flex-wrap gap-2" id="filters">
                         <button class="btn filter-button" data-category="vanilla">Vanilla</button>
                         <button class="btn filter-button" data-category="yordle">Yordles</button>
                         <button class="btn filter-button" data-category="futanari">Futanari</button>
                         <button class="btn filter-button" data-category="subscribestar">Subscribestar</button>
                     </div>
+
+                    <!-- New Extra Box -->
+                    <div class="extra-box mt-4 p-3">
+                        <H6><ul>
+                            <li>Send me a direct message on discord (username: onothera) for prices or anything related</li><br>
+    
+                            <li>Any of these mods is 100% compatible with cslol program and yes, all have jiggle physics</li><br>
+    
+                            <li>Subscribestar mods are only obtained here: <a href="https://subscribestar.adult/onothera">subscribestar.adult/onothera</a></li><br>
+
+                            <li>If payment methods on the subscribestar are troublesome, message me on discord, no problem</a></li><br>
+
+                            <li>The mods need you to use both the main champion as well as having and using the skin on the account, using "skinchanger" or "skinhack" is against League of Legends Terms and Conditions</li>
+
+                        </ul></H6>
+                    </div>
                 </div>
+
 
                 <!-- Photo Grid -->
                 <div class="col-lg-9">
@@ -129,7 +151,8 @@
         <!-- Footer -->
         <footer class="footer text-center">
             <p class="mb-0">&copy; ONOTHERA</p>
-            <span style="font-size:0.8em">The mods need you to use both the main champion as well as having and using the skin on the account, 
+            <span style="font-size:0.8em">The mods need you to use both the main champion as well as having and using
+                the skin on the account,
                 using "skinchanger" or "skinhack" is against League of Legends Terms and Conditions</span><br>
         </footer>
     </div>
