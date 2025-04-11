@@ -9,123 +9,76 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
         rel="stylesheet">
     <style>
-        /* Estilos generales */
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #1F1F1F;
-            color: #F4EFE6;
-            margin: 0;
-            padding: 0;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #1F1F1F; color: #F4EFE6; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .main-content-container { flex-grow: 1; }
+        .search-bar { background-color: #F4EFE6; border: none; border-radius: 20px; color: #1C160C; padding: 0.5rem 1rem; margin-bottom: 1rem; }
+        .filter-button { border-radius: 20px; padding: 0.375rem 1rem; border: none; background-color: #F4EFE6; color: #1C160C; transition: all 0.2s ease; margin-right: 5px; }
+        .filter-button.active { background-color: #1C160C; color: #F4EFE6; }
+        .card { cursor: pointer; background-color: #FFFFFF; color: #1C160C; border-radius: 10px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 100%; }
+        .card:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); }
+        .card-img-top { object-fit: cover; border-top-left-radius: 10px; border-top-right-radius: 10px; width: 100%; aspect-ratio: 1 / 1; }
+        .card-body { display: flex; flex-direction: column; }
+        .card-title { margin-top: auto; }
+        .modal-content { background-color: #1C160C; color: #F4EFE6; border: none; }
+        .modal-body .img-thumbnail { background-color: #1C160C; border: 1px solid #444; margin: 5px; transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; width: 100px; height: 100px; object-fit: cover; }
+        .modal-body .img-thumbnail:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4); }
+        .modal-body .img-thumbnail.active-thumb { border: 2px solid #F4EFE6; box-shadow: 0 0 8px rgba(244, 239, 230, 0.7); }
+        .extra-box { background-color: #2A2A2A; border-radius: 10px; min-height: 150px; color: #F4EFE6; }
+        .extra-box a { color: #a0d2eb; text-decoration: none; }
+        .extra-box a:hover { text-decoration: underline; }
+        .sidebar-container h6 { color: #F4EFE6; margin-top: 1rem; margin-bottom: 0.5rem; border-bottom: 1px solid #444; padding-bottom: 0.3rem; }
 
-        /* Barra de búsqueda */
-        .search-bar {
-            background-color: #F4EFE6;
-            border: none;
-            border-radius: 20px;
-            color: #1C160C;
-            padding: 0.5rem 1rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Botones de filtro */
-        .filter-button {
-            border-radius: 20px;
-            padding: 0.375rem 1rem;
-            border: none;
-            background-color: #F4EFE6;
-            color: #1C160C;
-            transition: all 0.2s ease;
-            margin-right: 5px;
-        }
-
-        .filter-button.active {
-            background-color: #1C160C;
-            color: #F4EFE6;
-        }
-
-        /* Tarjetas */
-        .card {
-            cursor: pointer;
-            background-color: #FFFFFF;
-            color: #1C160C;
-            border-radius: 10px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-img {
-            object-fit: cover;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-
-        /* Modal */
-        .modal-content {
-            background-color: #1C160C;
-            color: #F4EFE6;
-            border: none;
-        }
-
-        .modal-body .img-thumbnail {
-            background-color: #1C160C;
-            border: none;
-            margin: 5px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .modal-body .img-thumbnail:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
-        }
-
-        .extra-box {
-            background-color: #2A2A2A;
-            border-radius: 10px;
-            min-height: 150px;
-            color: #F4EFE6;
+        /* FUERZA OCULTAR INICIALMENTE */
+        .hidden-initially {
+            display: none !important;
         }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid min-vh-100 d-flex flex-column">
-        <!-- Header -->
+    <div class="d-flex flex-column min-vh-100">
+
         <header class="border-bottom py-3 px-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="header-title mb-0">ONOTHERA CUSTOMS</h2>
                 <nav>
-                    <a href="https://linktr.ee/onothera" class="text-decoration-none text-light mx-2">More Content</a>
+                    <a href="https://linktr.ee/onothera" class="text-decoration-none text-light mx-2" target="_blank"
+                         rel="noopener noreferrer">More Content</a>
                 </nav>
             </div>
         </header>
 
-        <!-- Main Content -->
-        <div class="container my-4 flex-grow-1">
+        <div class="container my-4 flex-grow-1 main-content-container">
             <div class="row">
 
-
-                <!-- Sidebar -->
                 <div class="col-lg-3 sidebar-container mb-4">
-                    <!-- Search Bar -->
                     <input type="text" id="searchBar" class="form-control search-bar mb-3" placeholder="Search">
 
-                    <!-- Filter Buttons -->
-                    <div class="d-flex flex-wrap gap-2" id="filters">
-                        <button class="btn filter-button" data-category="vanilla">Vanilla</button>
-                        <button class="btn filter-button" data-category="yordle">Yordles</button>
-                        <button class="btn filter-button" data-category="futanari">Futanari</button>
-                        <button class="btn filter-button" data-category="subscribestar">Subscribestar / Patreon</button>
-                        <button class="btn filter-button" data-category="monster_others">Monster/Others</button>
+                    <h6>Type</h6>
+                    <div class="d-flex flex-wrap gap-2 mb-3" id="genreFilters">
+                        <button class="btn filter-button genre-filter" data-category="vanilla">Vanilla</button>
+                        <button class="btn filter-button genre-filter" data-category="yordle">Yordles</button>
+                        <button class="btn filter-button genre-filter" data-category="futanari">Futanari</button>
+                        <button class="btn filter-button genre-filter" data-category="monster_others">Monster/Others</button>
+                        <button class="btn filter-button genre-filter" data-category="bunny-suit">Bunny Suit</button>
                     </div>
 
-                    <!-- New Extra Box -->
+                    <h6>Disponibilidad</h6>
+                    <div class="d-flex flex-wrap gap-2 mb-3" id="availabilityFilters">
+                        <button class="btn filter-button availability-filter active" data-availability="all">Todos</button>
+                        <button class="btn filter-button availability-filter" data-availability="patreon">Patreon/Subscribestar</button>
+                        <button class="btn filter-button availability-filter" data-availability="other">Otros</button>
+                    </div>
+
+                    <h6 id="tierFilterHeader" class="hidden-initially" style="display: none;">Nivel Patreon/Subscribestar</h6>
+                    <div class="d-flex flex-wrap gap-2 hidden-initially" id="tierFilters" style="display: none;">
+                        <button class="btn filter-button tier-filter" data-category="silver">🥈 Silver Secret 🥈</button>
+                        <button class="btn filter-button tier-filter" data-category="gold">🥇 Gold Temptation 🥇</button>
+                        <button class="btn filter-button tier-filter" data-category="platinum">💎 Platinum Desire 💎</button>
+                    </div>
+
                     <div class="extra-box mt-4 p-3">
+                        <h1>Information: </h1>
                         <H6>
                             <ul>
                                 <li>Send me a direct message on discord (username: onothera) for prices or any doubt you
@@ -148,392 +101,252 @@
                     </div>
                 </div>
 
-
-                <!-- Photo Grid -->
                 <div class="col-lg-9">
-                    <div class="row g-3" id="photoGrid"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer class="footer text-center">
-            <p class="mb-0">&copy; ONOTHERA</p>
-            <span style="font-size:0.8em">The mods need you to use both the main champion as well as having and using
-                the skin on the account,
-                using "skinchanger" or "skinhack" is against League of Legends Terms and Conditions</span><br>
-        </footer>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Photo Details</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="modalImage" src="" class="img-fluid" alt="Photo">
-                    <p id="modalDescription" class="mt-3"></p>
-                    <div id="extraImagesContainer" class="mt-3 d-flex flex-wrap gap-2 justify-content-center"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const photos = [
-            {
-                title: "Qiyana - Base - Gyaru",
-                category: ["vanilla", "subscribestar"],
-                img: "Photos/Qiyana/Gyaru/w_front_2.png",
-                extraImages: [
-                    "Photos/Qiyana/Gyaru/w_front_1.png",
-                    "Photos/Qiyana/Gyaru/w_back_1.png",
-                    "Photos/Qiyana/Gyaru/w_back_2.png"
-                ]
-            },
-            {
-                title: "Sona - Base - Bunny Suit - Blue",
-                category: ["vanilla", "bunny-suit", "subscribestar"],
-                img: "Photos/Sona/BunnySuit_Sona/blue_front.png",
-                extraImages: [
-                    "Photos/Sona/BunnySuit_Sona/blue_back.png",
-                ]
-            },
-            {
-                title: "Sona - Base - Bunny Suit - Black",
-                category: ["vanilla", "bunny-suit", "subscribestar"],
-                img: "Photos/Sona/BunnySuit_Sona/black_front.png",
-                extraImages: [
-                    "Photos/Sona/BunnySuit_Sona/black_back.png",
-                ]
-            },
-            {
-                title: "Nami - Coven - Nude",
-                category: ["monster_others", "subscribestar"],
-                img: "Photos/Nami/Coven/nude_front.png",
-                extraImages: [
-                    "Photos/Nami/Coven/nude_back.png",
-                    "Photos/Nami/Coven/human_front.png"
-                ]
-            },
-            {
-                title: "Nami - Coven - Futa",
-                category: ["monster_others", "subscribestar", "futanari"],
-                img: "Photos/Nami/Coven/futa_front.png",
-            },
-            {
-                title: "Evelynn - KDA All out - Nun Suit",
-                category: ["vanilla", "subscribestar"],
-                img: "Photos/Evelynn/KDA_Nun/idle_front.png",
-                extraImages: [
-                    "Photos/Evelynn/KDA_Nun/idle_back.png",
-                    "Photos/Evelynn/KDA_Nun/recall_front.png",
-                    "Photos/Evelynn/KDA_Nun/recall_front_1.png"
-                ]
-            },
-            {
-                title: "Mel - Base - Nude",
-                category: ["vanilla"],
-                img: "Photos/Mel/Nude/front_polished.png",
-                extraImages: [
-                    "Photos/Mel/Nude/back_polished.png",
-                    "Photos/Mel/Nude/latera_polished.png"
-                ]
-            },
-            {
-                title: "Aurora - Bunny Suit",
-                category: ["vanilla", "bunny-suit"],
-                img: "Photos/Aurora/BunnySuit/ReverseBunnySuit.jpg",
-                extraImages: [
-                    "Photos/Aurora/BunnySuit/BunnySuit.jpg",
-                    "Photos/Aurora/BunnySuit/AuroraGIF.gif",
-                ]
-            },
-            {
-                title: "Neeko - Street Demon",
-                category: ["vanilla", "subscribestar"],
-                img: "Photos/Neeko/StreetDemon_Nude/Female/female_front.png",
-                extraImages: [
-                    "Photos/Neeko/StreetDemon_Nude/Female/female_back.png",
-                ]
-            },
-            {
-                title: "Neeko - Street Demon - Futanari",
-                category: ["futanari", "subscribestar"],
-                img: "Photos/Neeko/StreetDemon_Nude/Futanari/futanari_front.png",
-                extraImages: [
-                    "Photos/Neeko/StreetDemon_Nude/Futanari/futanari_back.png",
-                ]
-            },
-            {
-                title: "Orianna - Bunny Suit",
-                category: ["vanilla"],
-                img: "Photos/Orianna/BunnySuit/BunnySuit_front.png",
-                extraImages: [
-                    "Photos/Orianna/BunnySuit/BunnySuit_back.png",
-                ]
-            },
-            {
-                title: "Caitlyn - Arcane Prestige",
-                category: ["vanilla"],
-                img: "Photos/Caitlyn/Arcane_Prestige/front_variant1.png",
-            },
-            {
-                title: "Caitlyn - Arcane Prestige - Suspenders",
-                category: ["vanilla"],
-                img: "Photos/Caitlyn/Arcane_Prestige/front.png",
-                extraImages: [
-                    "Photos/Caitlyn/Arcane_Prestige/lateral.png",
-                    "Photos/Caitlyn/Arcane_Prestige/back_capeless.png",
-                    "Photos/Caitlyn/Arcane_Prestige/front_chroma.png",
-                    "Photos/Caitlyn/Arcane_Prestige/back_capeless_chroma.png"
-                ]
-            },
-            {
-                title: "Nilah",
-                category: ["vanilla"],
-                img: "Photos/Nilah/Nude/Female_Front.png",
-                extraImages: [
-                    "Photos/Nilah/Nude/Female_Profile.png"
-                ]
-            },
-            {
-                title: "Nilah - Futanari",
-                category: ["futanari"],
-                img: "Photos/Nilah/Nude/Futa_Front.png",
-                extraImages: [
-                    "Photos/Nilah/Nude/Futa_Profile.png"
-                ]
-            },
-            {
-                title: "Coven Nilah",
-                category: ["vanilla"],
-                img: "Photos/Nilah/Coven/female_front.png",
-                extraImages: [
-                    "Photos/Nilah/Coven/female_profile.png"
-                ]
-            },
-            {
-                title: "Coven Nilah - Futanari",
-                category: ["futanari"],
-                img: "Photos/Nilah/Coven/futa_front.png",
-                extraImages: [
-                    "Photos/Nilah/Coven/futa_profile.png"
-                ]
-            },
-            {
-                title: "DJ Sona - Bikini",
-                category: ["vanilla"],
-                img: "Photos/Sona/DJ Sona/sonaDJ.gif",
-                extraImages: [
-                    "Photos/Sona/DJ Sona/djsonaBikini.jpg",
-                    "Photos/Sona/DJ Sona/djsonaBikini2.jpg",
-                    "Photos/Sona/DJ Sona/djsonaBikini3.jpg"
-                ]
-            },
-            {
-                title: "Ahri - Void",
-                category: ["vanilla"],
-                img: "Photos/Ahri/Void_Suit/NormalSuit.jpg",
-                extraImages: [
-                    "Photos/Ahri/Void_Suit/HearSuit.jpg",
-                    "Photos/Ahri/Void_Suit/CleavageSuit.jpg"
-                ]
-            },
-            {
-                title: "Ahri - Void Futanari",
-                category: ["futanari"],
-                img: "Photos/Ahri/Void_Suit/NormalSuit_FutanariNormal.jpg",
-                extraImages: [
-                    "Photos/Ahri/Void_Suit/NormalSuit_FutanariGlowdick.jpg",
-                    "Photos/Ahri/Void_Suit/NormalSuit_Horsecock.jpg",
-                    "Photos/Ahri/Void_Suit/NormalSuit_Horsecock_Glowing.jpg"
-                ]
-            },
-            {
-                title: "Briar - Bunny Suit",
-                category: ["vanilla"],
-                img: "Photos/Briar/BunnySuit/Piercings.jpg",
-                extraImages: [
-                    "Photos/Briar/BunnySuit/PatchedNipples.jpg"
-                ]
-            },
-            {
-                title: "Anima Squad Seraphine",
-                category: ["vanilla"],
-                img: "Photos/Seraphine/AnimaSquad/Idle1.jpg",
-                extraImages: [
-                    "Photos/Seraphine/AnimaSquad/Idle2.jpg",
-                    "Photos/Seraphine/AnimaSquad/Butt.jpg"
-                ]
-            },
-            {
-                title: "Janna",
-                category: ["vanilla"],
-                img: "Photos/Janna/Bewetching/JannaFront.jpg",
-                extraImages: [
-                    "Photos/Janna/Bewetching/JannaFront2.jpg",
-                    "Photos/Janna/Bewetching/JannaWitch.gif"
-           ]
-            },
-            {
-                title: "Vex",
-                category: ["yordle"],
-                img: "Photos/Vex/Nude/nude.jpg",
-            },
-            {
-                title: "Vex - Futanari",
-                category: ["yordle", "futanari"],
-                img: "Photos/Vex/Futanari/futa1.jpg",
-                extraImages: [
-                    "Photos/Vex/Futanari/futa2.jpg"
-                ]
-            },
-            {
-                title: "Primordial Briar",
-                category: ["vanilla"],
-                img: "Photos/Briar/Primordial/briarJacket.gif",
-                extraImages: [
-                    "Photos/Briar/Primordial/Jacket.jpg",
-                    "Photos/Briar/Primordial/NoJacket.jpg"
-                ]
-            },
-            {
-                title: "Empyreal Kayle Prestige",
-                category: ["vanilla"],
-                img: "Photos/Kayle/EmpyreanPrestige/Evolved.jpg",
-                extraImages: [
-                    "Photos/Kayle/EmpyreanPrestige/Base.jpg"
-                ]
-            },
-            {
-                title: "Fright Night Zeri Prestige",
-                category: ["vanilla"],
-                img: "Photos/Zeri/FrightNightPrestige/Fright_Night_Zeri_Prestige.jpg",
-                extraImages: [
-                    "Photos/Zeri/FrightNightPrestige/Fright_Night_Zeri_Prestige.gif"
-                ]
-            },
-            {
-                title: "Ambessa - Chosen Of the Wolf",
-                category: ["vanilla"],
-                img: "Photos/Ambessa/Choosed_Wolf/ult_front.png",
-                extraImages: [
-                    "Photos/Ambessa/Choosed_Wolf/front.png"
-                ]
-            }
-
-        ];
-
-        let activeCategories = new Set(['vanilla']); // Vanilla activada por defecto
-        let searchQuery = '';
-
-        const photoGrid = document.getElementById('photoGrid');
-        const searchBar = document.getElementById('searchBar');
-        const filterButtons = document.querySelectorAll('.filter-button');
-
-        function loadPhotos() {
-            photoGrid.innerHTML = '';
-            const filteredPhotos = photos.filter(photo => {
-                const matchesCategory = (activeCategories.size === 0 && photo.category.length === 0) ||
-                    ([...activeCategories].some(category => photo.category.includes(category)) && (photo.category.includes('subscribestar') || !activeCategories.has('subscribestar')));
-                const matchesSearch = !searchQuery || photo.title.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchesCategory && matchesSearch;
-            });
-
-            if (filteredPhotos.length === 0) {
-                photoGrid.innerHTML = '<p class="text-center text-muted">No photos found.</p>';
-                return;
-            }
-
-            filteredPhotos.forEach((photo, index) => {
-                const photoCard = `
-            <div class="col-md-4">
-                <div class="card" data-index="${index}">
-                    <img src="${photo.img}" class="card-img-top card-img">
-                    <div class="card-body text-center">
-                        <h6 class="card-title">${photo.title}</h6>
+                    <div class="row g-3" id="photoGrid">
                     </div>
                 </div>
             </div>
-        `;
-                photoGrid.innerHTML += photoCard;
-            });
+        </div>
 
-            document.querySelectorAll('.card').forEach((card, newIndex) => {
-                card.addEventListener('click', () => {
-                    openModal(filteredPhotos[newIndex]);
-                });
-            });
-        }
+        <footer class="footer text-center mt-auto py-3 border-top">
+            <p class="mb-1">&copy; ONOTHERA</p>
+            <span style="font-size:0.8em">The mods need you to use both the main champion as well as having and using the skin on the account, using "skinchanger" or "skinhack" is against League of Legends Terms and Conditions</span>
+        </footer>
+    </div>
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="photoModalLabel">Photo Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" class="img-fluid mb-3" alt="Main Mod Image">
+                    <p id="modalDescription" class="mt-2 visually-hidden"></p>
+                    <div id="extraImagesContainer" class="mt-3 d-flex flex-wrap gap-2 justify-content-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        function openModal(photo) {
-            const modalImage = document.getElementById('modalImage');
-            const modalDescription = document.getElementById('modalDescription');
-            const extraImagesContainer = document.getElementById('extraImagesContainer');
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const photos = [
+                 { title: "Qiyana - Base - Gyaru", category: ["vanilla", "subscribestar","silver"], img: "Photos/Qiyana/Gyaru/w_front_2.png", extraImages: [ "Photos/Qiyana/Gyaru/w_front_1.png", "Photos/Qiyana/Gyaru/w_back_1.png", "Photos/Qiyana/Gyaru/w_back_2.png" ] },
+                 { title: "Lux - Space Groove", category: ["vanilla", "subscribestar", "gold"], img: "Photos/Lux/Space_Groove/space_groove.png", extraImages: [ "Photos/Sona/BunnySuit_Sona/black_back.png", ] },
+                 { title: "Lux - Space Groove - All Chroma Bundle", category: ["vanilla", "subscribestar", "platinum"], img: "Photos/Lux/Space_Groove/space_groove_chroma.png", extraImages: [ "Photos/Lux/Space_Groove/front_base.png", "Photos/Lux/Space_Groove/back_base.png"] },
+                 { title: "Sona - Base - Bunny Suit - Blue", category: ["vanilla", "bunny-suit", "subscribestar","silver"], img: "Photos/Sona/BunnySuit_Sona/blue_front.png", extraImages: [ "Photos/Sona/BunnySuit_Sona/blue_back.png", ] },
+                 { title: "Sona - Base - Bunny Suit - Black", category: ["vanilla", "bunny-suit", "subscribestar","silver"], img: "Photos/Sona/BunnySuit_Sona/black_front.png", extraImages: [ "Photos/Sona/BunnySuit_Sona/black_back.png", ] },
+                 { title: "Nami - Coven - Nude", category: ["monster_others", "subscribestar","silver"], img: "Photos/Nami/Coven/nude_front.png", extraImages: [ "Photos/Nami/Coven/nude_back.png", "Photos/Nami/Coven/human_front.png" ] },
+                 { title: "Nami - Coven - Futa", category: ["monster_others", "subscribestar", "futanari","silver"], img: "Photos/Nami/Coven/futa_front.png", },
+                 { title: "Evelynn - KDA All out - Nun Suit", category: ["vanilla", "subscribestar","silver"], img: "Photos/Evelynn/KDA_Nun/idle_front.png", extraImages: [ "Photos/Evelynn/KDA_Nun/idle_back.png", "Photos/Evelynn/KDA_Nun/recall_front.png", "Photos/Evelynn/KDA_Nun/recall_front_1.png" ] },
+                 { title: "Mel - Base - Nude", category: ["vanilla"], img: "Photos/Mel/Nude/front_polished.png", extraImages: [ "Photos/Mel/Nude/back_polished.png", "Photos/Mel/Nude/latera_polished.png" ] },
+                 { title: "Aurora - Bunny Suit", category: ["vanilla", "bunny-suit"], img: "Photos/Aurora/BunnySuit/ReverseBunnySuit.jpg", extraImages: [ "Photos/Aurora/BunnySuit/BunnySuit.jpg", "Photos/Aurora/BunnySuit/AuroraGIF.gif", ] },
+                 { title: "Neeko - Street Demon", category: ["vanilla", "subscribestar","silver"], img: "Photos/Neeko/StreetDemon_Nude/Female/female_front.png", extraImages: [ "Photos/Neeko/StreetDemon_Nude/Female/female_back.png", ] },
+                 { title: "Neeko - Street Demon - Futanari", category: ["futanari", "subscribestar","silver"], img: "Photos/Neeko/StreetDemon_Nude/Futanari/futanari_front.png", extraImages: [ "Photos/Neeko/StreetDemon_Nude/Futanari/futanari_back.png", ] },
+                 { title: "Orianna - Bunny Suit", category: ["vanilla"], img: "Photos/Orianna/BunnySuit/BunnySuit_front.png", extraImages: [ "Photos/Orianna/BunnySuit/BunnySuit_back.png", ] },
+                 { title: "Caitlyn - Arcane Prestige", category: ["vanilla"], img: "Photos/Caitlyn/Arcane_Prestige/front_variant1.png", },
+                 { title: "Caitlyn - Arcane Prestige - Suspenders", category: ["vanilla"], img: "Photos/Caitlyn/Arcane_Prestige/front.png", extraImages: [ "Photos/Caitlyn/Arcane_Prestige/lateral.png", "Photos/Caitlyn/Arcane_Prestige/back_capeless.png", "Photos/Caitlyn/Arcane_Prestige/front_chroma.png", "Photos/Caitlyn/Arcane_Prestige/back_capeless_chroma.png" ] },
+                 { title: "Nilah", category: ["vanilla"], img: "Photos/Nilah/Nude/Female_Front.png", extraImages: [ "Photos/Nilah/Nude/Female_Profile.png" ] },
+                 { title: "Nilah - Futanari", category: ["futanari"], img: "Photos/Nilah/Nude/Futa_Front.png", extraImages: [ "Photos/Nilah/Nude/Futa_Profile.png" ] },
+                 { title: "Coven Nilah", category: ["vanilla"], img: "Photos/Nilah/Coven/female_front.png", extraImages: [ "Photos/Nilah/Coven/female_profile.png" ] },
+                 { title: "Coven Nilah - Futanari", category: ["futanari"], img: "Photos/Nilah/Coven/futa_front.png", extraImages: [ "Photos/Nilah/Coven/futa_profile.png" ] },
+                 { title: "DJ Sona - Bikini", category: ["vanilla"], img: "Photos/Sona/DJ Sona/sonaDJ.gif", extraImages: [ "Photos/Sona/DJ Sona/djsonaBikini.jpg", "Photos/Sona/DJ Sona/djsonaBikini2.jpg", "Photos/Sona/DJ Sona/djsonaBikini3.jpg" ] },
+                 { title: "Ahri - Void", category: ["vanilla"], img: "Photos/Ahri/Void_Suit/NormalSuit.jpg", extraImages: [ "Photos/Ahri/Void_Suit/HearSuit.jpg", "Photos/Ahri/Void_Suit/CleavageSuit.jpg" ] },
+                 { title: "Ahri - Void Futanari", category: ["futanari"], img: "Photos/Ahri/Void_Suit/NormalSuit_FutanariNormal.jpg", extraImages: [ "Photos/Ahri/Void_Suit/NormalSuit_FutanariGlowdick.jpg", "Photos/Ahri/Void_Suit/NormalSuit_Horsecock.jpg", "Photos/Ahri/Void_Suit/NormalSuit_Horsecock_Glowing.jpg" ] },
+                 { title: "Briar - Bunny Suit", category: ["vanilla"], img: "Photos/Briar/BunnySuit/Piercings.jpg", extraImages: [ "Photos/Briar/BunnySuit/PatchedNipples.jpg" ] },
+                 { title: "Anima Squad Seraphine", category: ["vanilla"], img: "Photos/Seraphine/AnimaSquad/Idle1.jpg", extraImages: [ "Photos/Seraphine/AnimaSquad/Idle2.jpg", "Photos/Seraphine/AnimaSquad/Butt.jpg" ] },
+                 { title: "Janna", category: ["vanilla"], img: "Photos/Janna/Bewetching/JannaFront.jpg", extraImages: [ "Photos/Janna/Bewetching/JannaFront2.jpg", "Photos/Janna/Bewetching/JannaWitch.gif" ] },
+                 { title: "Vex", category: ["yordle"], img: "Photos/Vex/Nude/nude.jpg", },
+                 { title: "Vex - Futanari", category: ["yordle", "futanari"], img: "Photos/Vex/Futanari/futa1.jpg", extraImages: [ "Photos/Vex/Futanari/futa2.jpg" ] },
+                 { title: "Primordial Briar", category: ["vanilla"], img: "Photos/Briar/Primordial/briarJacket.gif", extraImages: [ "Photos/Briar/Primordial/Jacket.jpg", "Photos/Briar/Primordial/NoJacket.jpg" ] },
+                 { title: "Empyreal Kayle Prestige", category: ["vanilla"], img: "Photos/Kayle/EmpyreanPrestige/Evolved.jpg", extraImages: [ "Photos/Kayle/EmpyreanPrestige/Base.jpg" ] },
+                 { title: "Fright Night Zeri Prestige", category: ["vanilla"], img: "Photos/Zeri/FrightNightPrestige/Fright_Night_Zeri_Prestige.jpg", extraImages: [ "Photos/Zeri/FrightNightPrestige/Fright_Night_Zeri_Prestige.gif" ] },
+                 { title: "Ambessa - Chosen Of the Wolf", category: ["vanilla"], img: "Photos/Ambessa/Choosed_Wolf/ult_front.png", extraImages: [ "Photos/Ambessa/Choosed_Wolf/front.png" ] }
+            ];
 
-            modalImage.src = photo.img;
-            modalDescription.innerText = photo.title;
-            extraImagesContainer.innerHTML = '';
+            let activeGenreCategories = new Set();
+            let activeAvailability = 'all';
+            let activeTierCategories = new Set();
+            let searchQuery = '';
 
-            if (photo.extraImages && photo.extraImages.length > 0) {
-                photo.extraImages.forEach(img => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = img;
-                    imgElement.className = 'img-thumbnail';
-                    imgElement.style.width = '100px';
+            const photoGrid = document.getElementById('photoGrid');
+            const searchBar = document.getElementById('searchBar');
+            const genreFilterButtons = document.querySelectorAll('.genre-filter');
+            const availabilityFilterButtons = document.querySelectorAll('.availability-filter');
+            const tierFilterButtons = document.querySelectorAll('.tier-filter');
+            const tierFilterSection = document.getElementById('tierFilters');
+            const tierFilterHeader = document.getElementById('tierFilterHeader');
+            const modalElement = document.getElementById('photoModal');
+            const modal = new bootstrap.Modal(modalElement);
+            const patreonTierCategories = ['subscribestar', 'silver', 'gold', 'platinum'];
 
-                    imgElement.addEventListener('click', () => {
-                        const tempSrc = modalImage.src;
-                        modalImage.src = imgElement.src;
-                        imgElement.src = tempSrc;
+            function loadPhotos() {
+                 photoGrid.innerHTML = '';
+                 const filteredPhotos = photos.filter(photo => {
+                     const matchesSearch = !searchQuery || photo.title.toLowerCase().includes(searchQuery.toLowerCase());
+                     if (!matchesSearch) return false;
+                     const isPatreonMod = photo.category.some(cat => patreonTierCategories.includes(cat));
+                     let matchesAvailability = false;
+                     if (activeAvailability === 'all') { matchesAvailability = true; }
+                     else if (activeAvailability === 'patreon') { matchesAvailability = isPatreonMod; }
+                     else if (activeAvailability === 'other') { matchesAvailability = !isPatreonMod; }
+                     if (!matchesAvailability) return false;
+                     let matchesGenre = activeGenreCategories.size === 0 || photo.category.some(cat => activeGenreCategories.has(cat));
+                     if (!matchesGenre) return false;
+                     let matchesTier = true;
+                     if (activeAvailability === 'patreon' && activeTierCategories.size > 0) { matchesTier = photo.category.some(cat => activeTierCategories.has(cat)); }
+                     return matchesTier;
+                 });
+
+                 if (filteredPhotos.length === 0) {
+                     photoGrid.innerHTML = '<p class="text-center text-muted col-12">No photos found matching your criteria.</p>';
+                     return;
+                 }
+
+                 filteredPhotos.forEach(photo => {
+                     const originalIndex = photos.findIndex(p => p.img === photo.img);
+                     const photoCard = `
+                     <div class="col-md-6 col-lg-4 mb-4">
+                         <div class="card" data-original-index="${originalIndex}">
+                             <img src="${photo.img}" class="card-img-top" alt="${photo.title}">
+                             <div class="card-body text-center">
+                                 <h6 class="card-title">${photo.title}</h6>
+                             </div>
+                         </div>
+                     </div>`;
+                     photoGrid.innerHTML += photoCard;
+                 });
+
+                 document.querySelectorAll('#photoGrid .card').forEach(card => {
+                     card.addEventListener('click', () => {
+                         const originalIndex = parseInt(card.getAttribute('data-original-index'));
+                         if (!isNaN(originalIndex) && originalIndex >= 0 && originalIndex < photos.length) { openModal(photos[originalIndex]); }
+                         else { console.error("Invalid index for modal:", card.getAttribute('data-original-index')); }
+                     });
+                 });
+            }
+
+            function openModal(photo) {
+                const modalImage = document.getElementById('modalImage');
+                const modalDescription = document.getElementById('modalDescription');
+                const extraImagesContainer = document.getElementById('extraImagesContainer');
+                const modalLabel = document.getElementById('photoModalLabel');
+
+                modalLabel.innerText = photo.title;
+                modalImage.src = photo.img;
+                modalImage.alt = photo.title;
+                modalDescription.innerText = photo.title;
+                extraImagesContainer.innerHTML = '';
+                extraImagesContainer.style.display = 'flex';
+
+                let hasExtras = photo.extraImages && photo.extraImages.length > 0;
+
+                const mainThumb = document.createElement('img');
+                mainThumb.src = photo.img;
+                mainThumb.alt = `Thumbnail for ${photo.title} (main)`;
+                mainThumb.className = 'img-thumbnail active-thumb';
+                mainThumb.onclick = () => {
+                    modalImage.src = mainThumb.src;
+                    document.querySelectorAll('#extraImagesContainer .img-thumbnail').forEach(th => th.classList.remove('active-thumb'));
+                    mainThumb.classList.add('active-thumb');
+                };
+                extraImagesContainer.appendChild(mainThumb);
+
+                if (hasExtras) {
+                    photo.extraImages.forEach((imgSrc, index) => {
+                        const imgElement = document.createElement('img');
+                        imgElement.src = imgSrc;
+                        imgElement.alt = `Thumbnail for ${photo.title} (extra ${index + 1})`;
+                        imgElement.className = 'img-thumbnail';
+                        imgElement.onclick = () => {
+                           modalImage.src = imgElement.src;
+                            document.querySelectorAll('#extraImagesContainer .img-thumbnail').forEach(th => th.classList.remove('active-thumb'));
+                            imgElement.classList.add('active-thumb');
+                        };
+                        extraImagesContainer.appendChild(imgElement);
                     });
-
-                    extraImagesContainer.appendChild(imgElement);
-                });
-            }
-
-            const modal = new bootstrap.Modal(document.getElementById('photoModal'));
-            modal.show();
-        }
-
-        searchBar.addEventListener('input', e => {
-            searchQuery = e.target.value;
-            loadPhotos();
-        });
-
-        filterButtons.forEach(button => {
-            const category = button.getAttribute('data-category');
-
-            if (activeCategories.has(category)) {
-                button.classList.add('active');
-            }
-
-            button.addEventListener('click', () => {
-                if (activeCategories.has(category)) {
-                    activeCategories.delete(category);
-                    button.classList.remove('active');
-                } else {
-                    activeCategories.add(category);
-                    button.classList.add('active');
                 }
-                loadPhotos();
+
+                if (!hasExtras && extraImagesContainer.children.length === 1) {
+                     extraImagesContainer.style.display = 'none';
+                }
+
+                modal.show();
+            }
+
+            // --- Función auxiliar para manejar visibilidad (Clase + Display Explícito al Mostrar) ---
+            function setTierVisibility(visible) {
+                if (visible) {
+                    // Quitamos la clase que fuerza a ocultar
+                    tierFilterHeader.classList.remove('hidden-initially');
+                    tierFilterSection.classList.remove('hidden-initially');
+                    // Establecemos explícitamente el display deseado
+                    tierFilterHeader.style.display = 'block'; // Asegura que el H6 se muestre
+                    tierFilterSection.style.display = 'flex';  // Asegura que el DIV se muestre como flex
+                } else {
+                    // Añadimos la clase que fuerza a ocultar (display: none !important).
+                    tierFilterHeader.classList.add('hidden-initially');
+                    tierFilterSection.classList.add('hidden-initially');
+                    // Limpiamos estilos explícitos por si acaso (aunque !important debería ganar)
+                    tierFilterHeader.style.display = '';
+                    tierFilterSection.style.display = '';
+                }
+            }
+
+            searchBar.addEventListener('input', e => { searchQuery = e.target.value.toLowerCase(); loadPhotos(); });
+
+            genreFilterButtons.forEach(button => {
+                 const category = button.getAttribute('data-category');
+                 if (activeGenreCategories.has(category)) { button.classList.add('active'); }
+                 button.addEventListener('click', () => {
+                     if (activeGenreCategories.has(category)) { activeGenreCategories.delete(category); button.classList.remove('active'); }
+                     else { activeGenreCategories.add(category); button.classList.add('active'); }
+                     loadPhotos();
+                 });
             });
-        });
 
-        loadPhotos();
+            availabilityFilterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const availability = button.getAttribute('data-availability');
+                    if (activeAvailability !== availability) {
+                        availabilityFilterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        activeAvailability = availability;
 
+                        setTierVisibility(activeAvailability === 'patreon'); // Usa la función auxiliar actualizada
+
+                        if (activeAvailability !== 'patreon') {
+                            activeTierCategories.clear();
+                            tierFilterButtons.forEach(btn => btn.classList.remove('active'));
+                        }
+                        loadPhotos();
+                    }
+                });
+            });
+
+            tierFilterButtons.forEach(button => {
+                 const category = button.getAttribute('data-category');
+                 button.addEventListener('click', () => {
+                     if (activeTierCategories.has(category)) { activeTierCategories.delete(category); button.classList.remove('active'); }
+                     else { activeTierCategories.add(category); button.classList.add('active'); }
+                     if (activeAvailability === 'patreon') { loadPhotos(); }
+                 });
+            });
+
+            genreFilterButtons.forEach(button => {
+                if (activeGenreCategories.has(button.getAttribute('data-category'))) { button.classList.add('active'); }
+            });
+
+            // Establecer visibilidad inicial usando la función auxiliar
+            setTierVisibility(activeAvailability === 'patreon');
+
+            loadPhotos(); // Carga inicial
+
+        }); // Fin del DOMContentLoaded
     </script>
-
-    </script>
-
 
 </body>
-
 </html>
